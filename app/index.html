@@ -3,71 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vice City Cover Studio</title>
-<link rel="icon" href="./favicon.png">
+<title>Cover Snap</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">
-    <span class="brand-mark">V</span>
-    <div>
-      <h1>Vice City Cover Studio</h1>
-      <p>Turn any photo into GTA-style multi-panel cover art. Offline, no upload.</p>
-    </div>
-  </div>
-  <div class="top-actions">
-    <button id="export-all" type="button" class="btn primary">Export all 3 sizes</button>
-  </div>
-</header>
-<main class="studio">
-  <section class="panel controls" aria-label="Cover controls">
-    <h2>Layout</h2>
-    <div class="picker" id="layout-picker" role="group" aria-label="Layout"></div>
-
-    <h2>Grade</h2>
-    <div class="picker" id="grade-picker" role="group" aria-label="Grade"></div>
-
-    <h2>Effects</h2>
-    <label class="row"><input id="fx-halftone" type="checkbox" checked> Halftone dots</label>
-    <label class="row">Grain <input id="fx-grain" type="range" min="0" max="100" value="35"></label>
-    <label class="row">Vignette <input id="fx-vignette" type="range" min="0" max="100" value="55"></label>
-
-    <h2>Caption</h2>
-    <label class="field">Title
-      <input id="title" type="text" maxlength="24" value="NEON SHORE">
-    </label>
-    <label class="field">Subtitle
-      <input id="subtitle" type="text" maxlength="32" value="vice city nights">
-    </label>
-
-    <h2>Selected panel</h2>
-    <p class="hint" id="panel-hint">Click a panel on the cover to select it, then drag to pan, scroll to zoom.</p>
-    <div class="panel-actions">
-      <button id="upload-panel" type="button" class="btn">Upload photo</button>
-      <input id="file-panel" type="file" accept="image/*" hidden>
-      <button id="fill-all" type="button" class="btn">Fill all panels</button>
-    </div>
-    <label class="row">Zoom <input id="zoom" type="range" min="100" max="300" value="100"></label>
-    <div class="samples">
-      <span>Samples:</span>
-      <button type="button" class="btn small" data-sample="boulevard">Boulevard</button>
-      <button type="button" class="btn small" data-sample="pier">Pier</button>
-    </div>
-
-    <h2>Export PNG</h2>
-    <div class="exports">
-      <button type="button" class="btn" data-export="1080x1080">1080 &times; 1080</button>
-      <button type="button" class="btn" data-export="1080x1350">1080 &times; 1350</button>
-      <button type="button" class="btn" data-export="1920x1080">1920 &times; 1080</button>
-    </div>
+<main class="app">
+  <section class="controls">
+    <h1>Cover Snap</h1>
+    <p>A photo and a caption, made into a square cover.</p>
+    <label>Photo <input id="photo" type="file" accept="image/*"></label>
+    <label>Caption <input id="caption" type="text" maxlength="40" value="Sunset Heist"></label>
+    <button id="export" type="button">Export PNG 1080 x 1080</button>
     <p id="status" role="status"></p>
   </section>
-
-  <section class="panel stage" aria-label="Cover preview">
-    <canvas id="cover" width="1080" height="1080" aria-label="The cover preview"></canvas>
-    <p class="stage-hint">Live preview &mdash; drag a panel to reposition its photo, scroll over it to zoom.</p>
-  </section>
+  <canvas id="cover" width="1080" height="1080" aria-label="The cover"></canvas>
 </main>
 <script type="module" src="./src/main.js"></script>
 </body>
